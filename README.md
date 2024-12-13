@@ -1,12 +1,39 @@
-# Welcome to your CDK TypeScript Construct Library project
+# @builtonaws/fastmail-route53-constructs
 
-You should explore the contents of this project. It demonstrates a CDK Construct Library that includes a construct (`FastmailRoute53Constructs`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
+CDK constructs for adding Fastmail domain verification DNS records to your Route53-managed domain.
 
-The construct defines an interface (`FastmailRoute53ConstructsProps`) to configure the visibility timeout of the queue.
+## Usage
 
-## Useful commands
+<details>
+<summary>TypeScript</summary>
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
+Install package:
+
+```sh
+npm install @builtonaws/fastmail-route53-constructs
+```
+
+Use FastmailDomainVerification construct:
+
+```typescript
+import { FastmailDomainVerification } from "@builtonaws/fastmail-route53-constructs";
+import * as cdk from "aws-cdk-lib";
+import * as r53 from "aws-cdk-lib/aws-route53";
+import type { Construct } from "constructs";
+
+export class ExampleStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
+
+    const hostedZone = new r53.PublicHostedZone(this, "PublicHostedZone", {
+      zoneName: "example.com",
+    });
+
+    new FastmailDomainVerification(this, "FastmailDomainVerification", {
+      domain: "example.com",
+      hostedZone,
+    });
+  }
+}
+```
+</details>
