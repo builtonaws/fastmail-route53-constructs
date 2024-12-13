@@ -1,24 +1,59 @@
 {
-  "name": "fastmail-route53-constructs",
+  "name": "@builtonaws/fastmail-route53-constructs",
   "version": "0.1.0",
+  "description": "Construct to add FastMail domain verification DNS records to Route53 hosted zone.",
+  "keywords": ["awscdk"],
+  "homepage": "https://github.com/builtonaws/fastmail-route53-constructs",
+  "bugs": "https://github.com/builtonaws/fastmail-route53-constructs/issues",
+  "repository": "github:builtonaws/fastmail-route53-constructs",
+  "author": {
+    "name": "João N. Matos",
+    "email": "me@joaonmatos.com",
+    "url": "https://www.joaonmatos.com/"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "changelog": "changelog",
+    "clean": "del **/*.{d.ts,js}",
+    "check": "run-p lint test",
+    "prebuild": "npm run check",
     "build": "tsc",
-    "watch": "tsc -w",
-    "test": "jest"
+    "lint": "biome check",
+    "lint:fix": "biome check --write",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.14",
-    "@types/node": "22.7.9",
+    "@biomejs/biome": "^1.9.4",
+    "@jest/globals": "^29.7.0",
+    "@types/node": "^18.19.68",
     "aws-cdk-lib": "2.173.0",
-    "constructs": "^10.0.0",
+    "constructs": "^10.4.2",
+    "del-cli": "^6.0.0",
+    "generate-changelog": "^1.8.0",
     "jest": "^29.7.0",
+    "npm-run-all": "^4.1.5",
     "ts-jest": "^29.2.5",
-    "typescript": "~5.6.3"
+    "typescript": "^5.7.2"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "2.173.0",
+    "aws-cdk-lib": "^2.0.0",
     "constructs": "^10.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "roots": ["<rootDir>/test"],
+    "testMatch": ["**/*.test.ts"],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    }
   }
 }
