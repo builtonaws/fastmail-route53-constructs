@@ -1,3 +1,13 @@
+#### 1.0.0 (2024-12-14)
+
+##### Build System / Dependencies
+
+*  Include type declaration in package output (4be242cc)
+
+##### Documentation Changes
+
+*  Add more package keywords (b87400a0)
+
 #### 0.2.0 (2024-12-14)
 
 ##### Build System / Dependencies
