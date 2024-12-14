@@ -6,15 +6,46 @@ import {
 } from "aws-cdk-lib/aws-route53";
 import { Construct } from "constructs";
 
+/**
+ * Properties to verify Fastmail domain.
+ */
 export interface FastmailDomainVerificationProps {
+  /**
+   * Domain name to verify.
+   */
   readonly domain: string;
+  /**
+   * Hosted zone to add records to.
+   */
   readonly hostedZone: IHostedZone;
+  /**
+   * Include subdomains in verification.
+   * @default true
+   */
   readonly includeSubdomains?: boolean;
 }
 
+/**
+ * Verifies a domain for use with Fastmail.
+ *
+ * @example
+ * new FastmailDomainVerification(stack, "Verification", {
+ *   domain: "example.com",
+ *   hostedZone: hostedZone,
+ * });
+ */
 export class FastmailDomainVerification extends Construct {
+  /**
+   * Verified domain name.
+   */
   readonly domain: string;
+  /**
+   * Hosted zone records are added to.
+   */
   readonly hostedZone: IHostedZone;
+  /**
+   * Whether subdomains are included in verification.
+   */
   readonly includeSubdomains: boolean;
 
   constructor(
