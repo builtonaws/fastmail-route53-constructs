@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "commonjs",
   "description": "Construct to add FastMail domain verification DNS records to Route53 hosted zone.",
-  "keywords": ["awscdk"],
+  "keywords": ["awscdk", "fastmail", "typescript", "aws", "route53"],
   "homepage": "https://github.com/builtonaws/fastmail-route53-constructs",
   "bugs": "https://github.com/builtonaws/fastmail-route53-constructs/issues",
   "repository": "github:builtonaws/fastmail-route53-constructs",
